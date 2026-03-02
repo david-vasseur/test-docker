@@ -5,9 +5,9 @@ services:
       dockerfile: Dockerfile.prod
     container_name: test-docker
     restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      NODE_ENV: production
-    ports:
-      - "4005:4000"
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
+    external: true
